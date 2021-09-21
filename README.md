@@ -8,6 +8,7 @@ Steps to create a pipeline:
 ## Prerequisites
 - Sign up/Login to IBM Cloud: https://ibm.biz/ddc-emea
 - OpenShift CLI and Tekton CLI. You can use the cloud shell to run your commands at https://shell.cloud.ibm.com/shell
+- Get Red Hat OpenShift Clusters from: https://developer.ibm.com/openlabs/openshift
 ## Pipeline Overview
 ![image](https://user-images.githubusercontent.com/36239840/133944055-7e25394c-ec19-41af-b267-2bbae7c0242c.png)
 ## Install OpenShift Pipelines Operator
