@@ -1,0 +1,25 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: e2e-api-pipelinerun
+spec:
+  pipelineRef:
+    name: e2e-pipeline
+  params:
+  - name: deployment-name
+    value: django-api
+  - name: git-url
+    value: https://github.com/shirosheroics/E2E_Example.git
+  - name: subdirectory
+    value: backend
+  - name: IMAGE
+    value: image-registry.openshift-image-registry.svc:5000/my-pipelines-project/django-api
+  workspaces:
+  - name: shared-workspace
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 500Mi
