@@ -104,16 +104,6 @@ tkn pipelinerun ls
 ```
 tkn pipeline logs -f
 ```
-## Triggers
-```
-oc create -f https://raw.githubusercontent.com/IBMDeveloperMEA/oc-devops/main/trigger/trigger-template.yaml -n ci-env
-```
-```
-oc create -f https://raw.githubusercontent.com/IBMDeveloperMEA/oc-devops/main/trigger/trigger-binding.yaml -n ci-env
-```
-```
-oc create -f https://raw.githubusercontent.com/IBMDeveloperMEA/oc-devops/main/trigger/event-listener.yaml -n ci-env
-```
 ## Resources
 - <a href='https://github.com/openshift/pipelines-tutorial'>OpenShift Pipelines Tutorial</a>
 - <a href='https://github.com/tektoncd/catalog'>Tekton Reusable Tasks</a>
