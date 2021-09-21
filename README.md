@@ -5,6 +5,9 @@ Steps to create a pipeline:
 - Create a PersistentVolumeClaim to provide the volume/filesystem for pipeline execution or provide a VolumeClaimTemplate which creates a PersistentVolumeClaim
 - Create a PipelineRun to instantiate and invoke the pipeline
 
+## Prerequisites
+- Sign up/Login to IBM Cloud: https://ibm.biz/ddc-emea
+- 
 ## Pipeline Overview
 ![image](https://user-images.githubusercontent.com/36239840/133944055-7e25394c-ec19-41af-b267-2bbae7c0242c.png)
 ## Install OpenShift Pipelines Operator
@@ -26,21 +29,21 @@ Steps to create a pipeline:
 
 
 ## Create project & Service account
-Create a project for the sample application that you will be using in this tutorial:
+- Create a project for the sample application that you will be using in this tutorial:
 ```
 oc new-project ci-env
 oc new-project dev-env
 oc new-project stage-env
 ```
-Make sure you are in the ```ci-env``` project
+- Make sure you are in the ```ci-env``` project
 ```
 oc project ci-env
 ```
-Run the following command to see the pipeline service account:
+- Run the following command to see the pipeline service account:
 ```
 oc get serviceaccount pipeline
 ```
-
+- Give required permissions for the pipeline service account in the ```ci-env``` project to be able to make changes in ```dev-env``` and ```stage-env``` projects.
 ```
 oc adm policy add-scc-to-user privileged system:serviceaccount:ci-env:pipeline -n ci-env
 oc adm policy add-scc-to-user privileged system:serviceaccount:ci-env:pipeline -n dev-env
@@ -62,20 +65,25 @@ oc create -f https://raw.githubusercontent.com/IBMDeveloperMEA/oc-devops/main/ta
 ```
 oc create -f https://raw.githubusercontent.com/IBMDeveloperMEA/oc-devops/main/tasks/test-task.yaml -n ci-env
 ```
+- List the tasks you just created
 ```
 tkn task ls
 ```
+- List ClusterTasks
 ```
 tkn clustertask ls
 ```
 ## Create Pipeline
+- Create the pipeline using the following command
 ```
 oc create -f https://raw.githubusercontent.com/IBMDeveloperMEA/oc-devops/main/pipeline.yaml -n ci-env
 ```
+- Show the newly created pipeline
 ```
 tkn pipeline ls
 ```
 ## Create PersistentVolumeClaim (PVC)
+- Create PVC
 ```
 oc create -f https://raw.githubusercontent.com/IBMDeveloperMEA/oc-devops/main/pvc.yaml -n ci-env
 ```
@@ -83,12 +91,15 @@ oc create -f https://raw.githubusercontent.com/IBMDeveloperMEA/oc-devops/main/pv
 oc get pvc -n ci-env
 ```
 ## Trigger Pipeline
+- Trigger the pipeline
 ```
 tkn pipeline start e2e-pipeline
 ```
+- Get the list of existing pipelinerun
 ```
 tkn pipelinerun ls
 ```
+- Track the logs for your pipelinerun
 ```
 tkn pipeline logs -f
 ```
