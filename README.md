@@ -52,15 +52,15 @@ oc adm policy add-role-to-user edit system:serviceaccount:ci-env:pipeline -n sta
 ## Create Tasks
 - create apply-manifest task
 ```
-oc create -f https://raw.githubusercontent.com/shirosheroics/E2E_Example/tekton-pipeline-setup/pipeline/tasks/apply-manifest-task.yaml -n ci-env
+oc create -f https://raw.githubusercontent.com/IBMDeveloperMEA/oc-devops/main/tasks/apply-manifest-task.yaml -n ci-env
 ```
 - create update-deployment task
 ```
-oc create -f https://raw.githubusercontent.com/shirosheroics/E2E_Example/tekton-pipeline-setup/pipeline/tasks/update-deployment-task.yaml -n ci-env
+oc create -f https://raw.githubusercontent.com/IBMDeveloperMEA/oc-devops/main/tasks/update-deployment-task.yaml -n ci-env
 ```
 - create test-app task
 ```
-oc create -f https://raw.githubusercontent.com/shirosheroics/E2E_Example/tekton-pipeline-setup/pipeline/tasks/test-task.yaml -n ci-env
+oc create -f https://raw.githubusercontent.com/IBMDeveloperMEA/oc-devops/main/tasks/test-task.yaml -n ci-env
 ```
 ```
 tkn task ls
@@ -70,14 +70,14 @@ tkn clustertask ls
 ```
 ## Create Pipeline
 ```
-oc create -f https://raw.githubusercontent.com/shirosheroics/E2E_Example/tekton-pipeline-setup/pipeline/pipeline.yaml -n ci-env
+oc create -f https://raw.githubusercontent.com/IBMDeveloperMEA/oc-devops/main/pipeline.yaml -n ci-env
 ```
 ```
 tkn pipeline ls
 ```
 ## Create PersistentVolumeClaim (PVC)
 ```
-oc create -f https://raw.githubusercontent.com/shirosheroics/E2E_Example/tekton-pipeline-setup/pipeline/pvc.yaml -n ci-env
+oc create -f https://raw.githubusercontent.com/IBMDeveloperMEA/oc-devops/main/pvc.yaml -n ci-env
 ```
 ```
 oc get pvc -n ci-env
@@ -94,13 +94,13 @@ tkn pipeline logs -f
 ```
 ## Triggers
 ```
-oc create -f https://raw.githubusercontent.com/shirosheroics/E2E_Example/tekton-pipeline-setup/pipeline/trigger/trigger-template.yaml -n ci-env
+oc create -f https://raw.githubusercontent.com/IBMDeveloperMEA/oc-devops/main/trigger/trigger-template.yaml -n ci-env
 ```
 ```
-oc create -f https://raw.githubusercontent.com/shirosheroics/E2E_Example/tekton-pipeline-setup/pipeline/trigger/trigger-binding.yaml -n ci-env
+oc create -f https://raw.githubusercontent.com/IBMDeveloperMEA/oc-devops/main/trigger/trigger-binding.yaml -n ci-env
 ```
 ```
-oc create -f https://raw.githubusercontent.com/shirosheroics/E2E_Example/tekton-pipeline-setup/pipeline/trigger/event-listener.yaml -n ci-env
+oc create -f https://raw.githubusercontent.com/IBMDeveloperMEA/oc-devops/main/trigger/event-listener.yaml -n ci-env
 ```
 ## Resources
 - <a href='https://github.com/openshift/pipelines-tutorial'>OpenShift Pipelines Tutorial</a>
